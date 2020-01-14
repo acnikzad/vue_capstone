@@ -1,14 +1,57 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import Signup from '../views/Signup.vue';
+import Login from '../views/Login.vue';
+import Logout from '../views/Logout.vue';
+import Map from '../views/GoogleMap.vue';
+import Profile from '../views/Profile.vue';
+import Alert from '../views/Alert.vue';
+import UserUpdate from '../views/UserUpdate.vue';
 
-Vue.use(VueRouter)
+
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: Signup
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: Logout
+  },
+  {
+    path: '/map',
+    name: 'map',
+    component: Map
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile
+  },
+  {
+    path: '/alert',
+    name: 'alert',
+    component: Alert
+  },
+  {
+    path: '/userupdate',
+    name: 'userupdate',
+    component: UserUpdate
   },
   {
     path: '/about',
@@ -18,12 +61,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;

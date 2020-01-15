@@ -3,7 +3,7 @@
     <div id="map">
       <gmap-map
         :center="center"
-        :zoom="12"
+        :zoom="zoom"
         map-type-id="roadmap"
         style="width: 100%; height: 600px">
         <gmap-marker
@@ -36,10 +36,12 @@
         <img v-bind:src="dog.image_url" height="300px">
         <br>
     </div>
-    <button v-on:click="alertDisplay">Click Me!</button>
-    <template v-if="latitude > 38.54524 || latitude < 38.5449 || longitude > -121.44167 || longitude < -121.44188">
+    <template >
       <h1>Alert</h1>
       <p>Cooper is outside your specified parameters</p>
+      <p>Coordinates: {{latitude}}, {{longitude}}</p>
+      <p>Nearest Street Address: {{address}}</p>
+      <button v-on:click="alertCreate">Alert Neighbors</button>     <button v-on:click="alertDisplay">Dismiss</button>
     </template>
   </div>
 </template>
@@ -54,14 +56,17 @@ const startMarker = ('http://www.pngall.com/wp-content/uploads/2017/05/Map-Marke
 export default {
   data: function() {
     return {
-      latitude: "",
-      longitude: "",
+      latitude: "38.5450266666667",
+      longitude: "-121.441875555556",
       address: "", 
       message: "Welcome to Vue.js!",
       user: {},
       currentUser: {},
-      dogs: [],
+      route: [],
+      newDogId: "",
+      newUserId: "",
       center: {lat:38.58166, lng:-121.49445},
+      zoom: 13,
       dog_route: [],
       name: "",
       markers:[{
@@ -86,7 +91,22 @@ export default {
 
   methods: {
     alertCreate() {
+      console.log('creating alert...');
+      this.indicator = true;
+      // var params = {
+      //   dog_id: this.newDogId,
+      //   user_id: this.newUserId,
+      // };
 
+      // axios.patch(`/api/alerts/1`).then(response => {
+
+      // });
+
+      this.center = {lat:this.latitude, lng: this.longitude},
+      this.zoom = 16;
+
+      this.markers.push({position: {lat:this.latitude, lng:this.longitude}});
+      console.log(this.markers);
     },
 
     alertDisplay() {
@@ -103,17 +123,20 @@ export default {
         console.log(response["data"]["longitude"]);
         console.log(response["data"]["address"]);
 
+        if (this.latitude > 38.54524 || this.latitude < 38.5449 || this.longitude > -121.44167 || this.longitude < -121.44188) {
+          // console.log("creating alert");
+          // alert("Cooper is out of your specified parameters");
+          this.alertCreate();
+        }
+
       });
     },
-    toggleInfo: function(theUser) {
-      console.log(theUser);
-      if (this.currentUser === theUser) {
-        this.currentUser = null;
-      } else {
-        this.currentUser = theUser;
-      }
-      console.log('in toggle info...');
-    },
+
+    addMarker: function(theMarker) {
+      console.log(theMarker);
+
+
+    }
   //   selectUser: function(theRecipe) {
   //     console.log('selecting the user');
   //     // if (theRecipe.selected === true) {

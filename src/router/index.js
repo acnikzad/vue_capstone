@@ -8,6 +8,10 @@ import Map from '../views/GoogleMap.vue';
 import Profile from '../views/Profile.vue';
 import Alert from '../views/Alert.vue';
 import UserUpdate from '../views/UserUpdate.vue';
+import DogShow from '../views/DogShow.vue';
+import UserShow from '../views/UserShow.vue';
+
+
 
 
 Vue.use(VueRouter);
@@ -52,6 +56,16 @@ const routes = [
     path: '/userupdate',
     name: 'userupdate',
     component: UserUpdate
+  },
+  {
+    path: '/dogshow',
+    name: 'dogshow',
+    component: DogShow
+  },
+  {
+    path: '/usershow',
+    name: 'usershow',
+    component: UserShow
   },
   {
     path: '/about',

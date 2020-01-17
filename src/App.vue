@@ -1,38 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/signup">Sign Up</router-link> |
-      <router-link to="/logout">Log Out</router-link>
+    <!-- Header -->
+    <div id="header-wrapper">
+      <div id="header" class="container">
+        <!-- Logo -->
+        <h1 id="logo"><a href="index.html">Block Hound<img src="https://image.flaticon.com/icons/png/512/21/21645.png" height="14px"></a></h1>
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li>
+            </li>
+            <li><a href="http://localhost:8080/signup">Sign Up</a></li>
+            <li><a href="http://localhost:8080/login">Login</a></li>
+            <li class="break"><a href="http://localhost:8080/logout">Logout</a></li>
+            <li><a href="http://localhost:8080/about">About Us</a></li>
+          </ul>
+        </nav>
+      </div>s
     </div>
     <router-view/>
+
+    <!-- Footer -->
+        <div id="footer-wrapper">
+          <!-- <div id="footer" class="container"> -->
+            <!-- <div class="row"> -->
+              <!-- <section class="col-2 col-12-narrower"> -->
+                <!-- <div class="row gtr-0"> -->
+                  <ul class="divided icons col-2 col-12-mobile">
+                    <li class="icon brands fa-twitter" onclick=""><a href="#"><span class="extra"></span></a></li>
+                    <li class="icon brands fa-facebook-f"><a href="#"><span class="extra"></span></a></li>
+                    <li class="icon brands fa-dribbble"><a href="#"><span class="extra"></span></a></li>
+                    <li class="icon brands fa-instagram"><a href="#"><span class="extra"></span></a></li>
+                    <li class="icon brands fa-youtube"><a href="#"><span class="extra"></span></a></li>
+                    <li class="icon brands fa-pinterest"><a href="#"><span class="extra"></span></a></li>
+                  </ul>
+                <!-- </div> -->
+              <!-- </section> -->
+            <!-- </div> -->
+          <!-- </div> -->
+          <div id="copyright" class="container">
+            <ul class="menu">
+              <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+          </div>
+        </div>
   </div>
 </template>
 
 <script>
-
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

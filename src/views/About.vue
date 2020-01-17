@@ -1,5 +1,8 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <center>
+      <h2>About Us</h2>
+      <h1>This is a class project</h1>
+    </center>
   </div>
 </template>

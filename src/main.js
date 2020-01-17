@@ -5,7 +5,9 @@ import axios from 'axios';
 import * as VueGoogleMaps from 'vue2-google-maps';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import VModal from 'vue-js-modal';
 
+Vue.use(VModal);
 Vue.use(VueSweetalert2);
 Vue.use(VueGoogleMaps, {
   load: {

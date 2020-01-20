@@ -7,9 +7,10 @@
         <div class="row features">
           <section class="col-6 col-12-narrower feature">
             <br>
-              <img src="https://i.imgur.com/7delG9w.jpg" width = "420">
+              <img v-bind:src="user.image_url" width = "420">
           </section>
           <section class="col-6 col-12-narrower feature">
+            <br>
             <p class="text-left" >First Name: {{user.first_name}}</p>
             <p class="text-left" >Last Name: {{user.last_name}}</p>
             <p class="text-left" >Email: {{user.email}}</p>

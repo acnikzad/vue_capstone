@@ -7,7 +7,9 @@
         <div class="row features">
           <section class="col-6 col-12-narrower feature">
             <br>
-              <img src="https://i.imgur.com/jr0tlst.jpg" width = "420">
+              <div v-for="dog in user.dogs">
+                <img v-bind:src="dog.image_url">
+              </div>
           </section>
           <section class="col-6 col-12-narrower feature">
             <div v-for="dog in user.dogs">

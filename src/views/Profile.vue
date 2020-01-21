@@ -18,26 +18,25 @@
       </gmap-map>
     </div>
     <center>
-      <section class="col-8 col-12-narrower feature">
+      <section class="col-9 col-12-narrower feature">
         <h2>Active Alerts</h2>
         <table class="table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Dog Name</th>
               <th scope="col">Nearest Street Address</th>
+              <th scope="col">Owner Name</th>
+              <th scope="col">Contact Number</th>
               <th scope="col">Last Pinged</th>
-              <th scope="col">Contact</th>
             </tr>
           </thead>
           <tbody v-for="alert in alerts" bgcolor="#F88C90">
-            <tr class="table-danger">
-              <td>{{dog_name}}</td>
+            <tr class="table-danger" v-on:click="alertIndex()">
+              <td>{{alert.dog_name}}</td>
               <td>{{address}}</td>
-              <div v-for="dog in user.dogs">
-                <td>{{dog.name}}</td>
-                <td>{{dog.ping_time}}</td>
-                <td>{{dog.user_id}}</td>
-              </div>
+              <td>{{alert.owner_name}}</td>
+              <td>{{alert.contact_number}}</td>
+              <td>{{time}}</td>
             </tr>
           </tbody>
         </table>
@@ -121,11 +120,15 @@
 </template>
 
 <style>
+table, th, td {
+  border: 1px solid black;
+}
 </style>
 
 <script>
 import * as VueGoogleMaps from "vue2-google-maps";
 import axios from "axios";
+var moment = require('moment');
 const startMarker = ('http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-Free-PNG-Image.png');
 export default {
   name: 'ExampleModal',
@@ -143,7 +146,7 @@ export default {
       newUserId: "",
       battery: "",
       alerts: [],
-      time: 0,
+      time: "",
       duration: 5000,
       center: {lat:38.58166, lng:-121.49445},
       zoom: 13,
@@ -185,16 +188,29 @@ export default {
       console.log(this.markers);
     },
 
+    alertIndex() {
+      console.log('indexing alert...');
+      this.center = {lat:this.latitude, lng: this.longitude},
+      this.zoom = 16;
+
+      this.markers.push({position: {lat:this.latitude, lng:this.longitude}});
+      console.log(this.markers);
+    },
+
     alertNeighbors() {
       console.log('alerting neighbors....');
       console.log(this.user);
-      console.log(this.user["dogs"][0]["id"]);
+      console.log(this.user["dogs"][0]["name"]);
 
       var params = {
         dog_id: this.user["dogs"][0]["id"],
         user_id: this.user["id"],
         latitude: this.latitude,
         longitude: this.longitude,
+        dog_name: this.user["dogs"][0]["name"],
+        address: this.address,
+        owner_name: this.user["first_name"],
+        contact_number: this.user["phone_number"]
       };
       $('#exampleModalCenter').modal('hide');
       axios
@@ -211,6 +227,7 @@ export default {
         this.longitude = response["data"]["longitude"];
         this.address = response["data"]["address"];
         this.battery = response["data"]["battery_percentage"];
+        this.time = moment().format('lll');
         console.log(response["data"]["latitude"]);
         console.log(response["data"]["longitude"]);
         console.log(response["data"]["address"]);

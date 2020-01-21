@@ -21,29 +21,13 @@
     <router-view/>
 
     <!-- Footer -->
-        <div id="footer-wrapper">
-          <!-- <div id="footer" class="container"> -->
-            <!-- <div class="row"> -->
-              <!-- <section class="col-2 col-12-narrower"> -->
-                <!-- <div class="row gtr-0"> -->
-                  <ul class="divided icons col-2 col-12-mobile">
-                    <li class="icon brands fa-twitter" onclick=""><a href="#"><span class="extra"></span></a></li>
-                    <li class="icon brands fa-facebook-f"><a href="#"><span class="extra"></span></a></li>
-                    <li class="icon brands fa-dribbble"><a href="#"><span class="extra"></span></a></li>
-                    <li class="icon brands fa-instagram"><a href="#"><span class="extra"></span></a></li>
-                    <li class="icon brands fa-youtube"><a href="#"><span class="extra"></span></a></li>
-                    <li class="icon brands fa-pinterest"><a href="#"><span class="extra"></span></a></li>
-                  </ul>
-                <!-- </div> -->
-              <!-- </section> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <div id="copyright" class="container">
-            <ul class="menu">
-              <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-          </div>
-        </div>
+    <div id="footer-wrapper">
+      <div id="copyright" class="container">
+        <ul class="menu">
+          <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 

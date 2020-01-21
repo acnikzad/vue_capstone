@@ -10,6 +10,7 @@ import Alert from '../views/Alert.vue';
 import UserUpdate from '../views/UserUpdate.vue';
 import DogShow from '../views/DogShow.vue';
 import UserShow from '../views/UserShow.vue';
+import DogCreate from '../views/DogCreate.vue';
 
 
 
@@ -66,6 +67,11 @@ const routes = [
     path: '/usershow',
     name: 'usershow',
     component: UserShow
+  },
+  {
+    path: '/dogcreate',
+    name: 'dogcreate',
+    component: DogCreate
   },
   {
     path: '/about',

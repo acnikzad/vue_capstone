@@ -8,7 +8,7 @@
           <section class="col-6 col-12-narrower feature">
             <br>
               <div v-for="dog in user.dogs">
-                <img v-bind:src="dog.image_url">
+                <img v-bind:src="dog.image_url" width ="420">
               </div>
           </section>
           <section class="col-6 col-12-narrower feature">

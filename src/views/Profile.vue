@@ -18,12 +18,14 @@
       </gmap-map>
     </div>
     <center>
-      <section class="col-9 col-12-narrower feature">
+      <section class="col-12 col-12-narrower feature">
         <h2>Active Alerts</h2>
         <table class="table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Dog Name</th>
+              <th scope="col">Color</th>
+              <th scope="col">Breed</th>
               <th scope="col">Nearest Street Address</th>
               <th scope="col">Owner Name</th>
               <th scope="col">Contact Number</th>
@@ -33,6 +35,8 @@
           <tbody v-for="alert in alerts" bgcolor="#F88C90">
             <tr class="table-danger" v-on:click="alertIndex()">
               <td>{{alert.dog_name}}</td>
+              <td>{{alert.color}}</td>
+              <td>{{alert.breed}}</td>
               <td>{{address}}</td>
               <td>{{alert.owner_name}}</td>
               <td>{{alert.contact_number}}</td>
@@ -106,7 +110,7 @@
             <p>Coordinates: {{latitude}}, {{longitude}}</p>
             <p>Nearest Street Address: {{address}}</p>
             <center>
-              <img src="https://i.imgur.com/jr0tlst.jpg" alt="" width=" 300"/>
+              <img v-bind:src="dog.image_url" width="300">
             </center>
           </div>
           <div class="modal-footer">
@@ -138,6 +142,8 @@ export default {
       longitude: "-121.441875555556",
       dog_id: "",
       user_id: "",
+      breed: "",
+      color:"",
       address: "", 
       user: {},
       currentUser: {},
@@ -201,6 +207,8 @@ export default {
       console.log('alerting neighbors....');
       console.log(this.user);
       console.log(this.user["dogs"][0]["name"]);
+      console.log(this.user["dogs"][0]["breed"]);
+      console.log(this.user["dogs"][0]["color"]);
 
       var params = {
         dog_id: this.user["dogs"][0]["id"],
@@ -208,9 +216,11 @@ export default {
         latitude: this.latitude,
         longitude: this.longitude,
         dog_name: this.user["dogs"][0]["name"],
+        color: this.user["dogs"][0]["color"],
+        breed: this.user["dogs"][0]["breed"],
         address: this.address,
         owner_name: this.user["first_name"],
-        contact_number: this.user["phone_number"]
+        contact_number: this.user["phone_number"],
       };
       $('#exampleModalCenter').modal('hide');
       axios
